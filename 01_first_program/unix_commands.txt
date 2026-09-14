@@ -1,0 +1,10 @@
+pwd (print working directory) - shows the path to the current directory
+ls (list) - shows the content of the current directory
+mkdir [directory_name] (make directory) - makes a new directory with the specifed name
+code [file_name (with extension)] - create a new file and open it in text editor
+cd [directory_name] (change directory) - go to a certain directory
+clear - clears the terminal
+.txt - text editor
+.cpp - c++ code editor
+g++ [directory_name] - g++ = compiler - compile listed directory
+./[Executable file] - runs the program
