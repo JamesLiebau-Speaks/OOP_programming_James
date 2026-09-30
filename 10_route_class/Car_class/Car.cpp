@@ -20,15 +20,16 @@ Car::Car() {
     model = "-";
     year = 1900;
     MPG = 0.0;
-    mileage = 278.4;
+    mileage = 0.0;
     fuel_capacity = 100.0;
     fuel_level = 0.0;
 }
-Car::Car(const std::string& mk, const std::string& mdl, int y, double mpg, double fuel_level, double mileage){
+Car::Car(const std::string& mk, const std::string& mdl, int y, double mpg, double lvl, double mileage){
     setMake(mk);
     setModel(mdl);
     setYear(y);
     setMPG(mpg);
+    setFuel_level(lvl);
 }
 void Car::printInfo() const{
     std::cout << "Make:\t\t" << make << std::endl;
@@ -38,6 +39,11 @@ void Car::printInfo() const{
     std::cout << "Fuel:\t\t" << fuel_level << std::endl;
     std::cout << "Miles:\t\t" << mileage << std::endl;
 }
+// void Car::refuel(double gallons){
+//     std::cout << "Refueling..." << std::endl;
+//     std::cout << "Fuel added: "<< gallons << std::endl;
+
+// }
 //get
 std::string Car::getMake() const{
     return make;
@@ -50,6 +56,9 @@ int Car::getYear() const{
 }
 double Car::getMPG() const{
     return MPG;
+}
+double Car::getFuel_level() const{
+    return fuel_level;
 }
 
 

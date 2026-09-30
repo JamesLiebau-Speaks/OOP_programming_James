@@ -14,13 +14,17 @@ public:
     std::string getModel() const;
     int getYear() const;
     double getMPG() const;
+    double getFuel_level() const;
     void printInfo() const;
+    void refuel(double gallons);
+
 
     //set
     void setMake(const std::string& mk);
     void setModel(const std::string& mdl);
     void setYear(const int yr);
     void setMPG(const double new_mpg);
+    void setFuel_level(const double lvl);
 
 private:
     std::string make;
