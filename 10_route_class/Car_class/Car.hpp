@@ -5,7 +5,7 @@
 class Car{
 public:
     Car(); // no-arg constructor
-    Car(const std::string& mk, const std::string& mdl, int y, double mpg);
+    Car(const std::string& mk, const std::string& mdl, int y, double mpg, double fuel_level, double mileage);
 
 
     //TODO
