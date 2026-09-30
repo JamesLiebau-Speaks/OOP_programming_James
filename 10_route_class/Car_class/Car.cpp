@@ -30,6 +30,7 @@ Car::Car(const std::string& mk, const std::string& mdl, int y, double mpg, doubl
     setYear(y);
     setMPG(mpg);
     setFuel_level(lvl);
+    //implement setter for mileage
 }
 void Car::printInfo() const{
     std::cout << "Make:\t\t" << make << std::endl;
@@ -70,10 +71,13 @@ void Car::setModel(const std::string& mdl){
     model = mdl;
 }
 void Car::setYear(const int yr){
-    year = yr;
+    year = (yr > 1900 && yr < 2027) ? yr : 1900;
 }
 void Car::setMPG(const double new_mpg){
-    MPG = new_mpg;
+    MPG = (new_mpg > 0) ? new_mpg : 0;
+}
+void Car::setFuel_level(const double lvl){
+    fuel_level = (lvl>0)? lvl : 0.0;
 }
 
 // int main(void){
