@@ -35,6 +35,8 @@ void Car::printInfo() const{
     std::cout << "Model:\t\t" << model << std::endl;
     std::cout << "Year:\t\t" << year << std::endl;
     std::cout << "MPG:\t\t" << MPG << std::endl;
+    std::cout << "Fuel:\t\t" << fuel_level << std::endl;
+    std::cout << "Miles:\t\t" << mileage << std::endl;
 }
 //get
 std::string Car::getMake() const{
