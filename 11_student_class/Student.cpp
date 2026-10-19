@@ -28,7 +28,6 @@ void Student::printStudentInfo() const {
     std::cout << "Name: " << name << " | GPA: " << gpa;
     std::cout << " | Can graduate: " << (canGraduate() ? "YES" : "NO");
     std::cout << " | ID: " << id << std::endl;
-
 }
 double Student::getRequiredGPA(){
     return required_gpa;

@@ -24,7 +24,6 @@ class Route {
         //Make set ttansport exept only pass if "Car", "Plane", "Train" (Allowed inputs)
         
         private:
-
         void updateLength() {
             //complex function that calculates the distance between two distances
             length = rand() % 1000 +100; 

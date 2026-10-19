@@ -22,7 +22,6 @@ int main(void) {
     // }
     return 0;
 }
-
 void printArr(const int* arr, int size) {
     for(int i = 0; i < size; i++) {
         std::cout << arr[i] << ' ';

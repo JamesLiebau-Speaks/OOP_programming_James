@@ -13,7 +13,6 @@ int main()
     if (sum >= 100)
       break;
   }
-
   cout << "The number is " << number << endl;
   cout << "The sum is " << sum << endl;
 
