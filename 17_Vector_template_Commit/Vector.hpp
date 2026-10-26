@@ -33,6 +33,8 @@ public:
     */
 
     void resize(int new_size, const T& val);
+    
+    Vector<T>& operator=(const Vector<T>& other);
 private:
     void allocateMemory(const T& new_capacity);      // Allocate a new array of a given capacity
     bool full() const;

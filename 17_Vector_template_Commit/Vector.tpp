@@ -15,7 +15,23 @@ Vector<T>::Vector(const Vector<T>& other) : size(other.size), capacity(other.cap
     for (int i = 0; i < size; i++) {
         data[i] = other.data[i];
     }
-}   
+}
+
+template <typename T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& other){
+    delete [] data;
+    capacity = other.capacity;
+    size = other.size;
+    data = new T[other.capacity];
+
+    // Copy the data from the vector other
+    for(int i = 0; i < size; i++){
+        data[i] = other.data[i];
+    }
+
+    return *this;
+
+}
 
 template <typename T>
 Vector<T>::~Vector() {
@@ -147,6 +163,7 @@ void Vector<T>::insert(int pos, const T& value) {
     data[pos] = value;
     size++;
 }
+
 /*
     If new_size > size - add new elements initialized with val
     If new_size < size - remove extra elements from the end
