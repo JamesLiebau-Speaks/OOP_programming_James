@@ -1,82 +1,31 @@
 #include "Point.hpp"
-#include <cstring>
-Point::Point(int x, int y, const std::string& tag) : x(x), y(y) {
-    this->tag = new char[tag.size() + 1];
-    strcpy(this->tag, tag.c_str());
-}
+#include <iostream>
 
-std::string Point::toString() const{
-    return std::string(tag) + ":-(" + std::to_string(x) + "," + std::to_string(y) + ")";
-}
-
-bool Point::operator==(const Point& other){
-    return x == other.x && y == other.y;
-}
-
-bool Point::operator!=(const Point& other){
-    //return x != other.x && y != other.y;
-    return !(*this == other);
-}
-
-Point Point::operator+(const Point& other){
-    return Point(x + other.x, y + other.y, tag);
-}
-// NEW v
-Point Point::operator-(const Point& other){
-    return Point(x - other.x, y - other.y, tag);
-}
-Point Point::operator/(const Point& other){
-    return Point(x / other.x, y / other.y, tag);
-}
-Point Point::operator%(const Point& other){
-    return Point(x % other.x, y % other.y, tag);
-}
-Point& Point::operator++(){
-    x += 1;
-    y += 1;
-    return *this;
-}
-Point Point::operator++(int ){
-    // Create the copy of the current point
-    Point temp(*this);
-    x += 1;
-    y += 1;
-    return temp;
-}
-Point& Point::operator+=(const Point& other){
-    x += other.x;
-    y += other.y;
+class LineSegment{
+public:
     
-    //*this = *this + other;
-    return *this;
-}
+private:
+    friend std::ostream& operator<<(std::ostream& out, const LineSegment& ls);
+    friend std::istream& operator>>(std::istream& in, LineSegment& ls);
+    Point start;
+    Point end;
+};
 
-Point& Point::operator*=(const Point& other){
-    x *= other.x;
-    y *= other.y;
-    return *this;
+int main(void){
+    LineSegment ls;
+    std::cin >> ls;
+    std::cout << ls;
 }
-Point& Point::operator--(){
-    x -= 1;
-    y -= 1;
-    return *this;
+std::ostream& operator<<(std::ostream& out, const LineSegment& ls){
+    out << "Start: " << ls.start << std::endl;
+    out << "End: " << ls.end << std::endl;
+    //out << "Length: " << ls.length << std::endl;
+    return out;
 }
-Point Point::operator--(int){
-    Point temp(*this);
-    x -= 1;
-    y -= 1;
-    return temp;
-}
-// NEW ^
-Point Point::operator*(const Point& other){
-    return Point(x * other.x, y * other.y, tag);
-}
-
-int& Point::operator[](int index){
-    if(index == 0){
-        return x;
-    }
-    else{
-        return y;
-    }
+std::istream& operator>>(std::istream& in, LineSegment& ls){
+    std::cout << "Enter start point: \n";
+    std::cin >> ls.start;
+    std::cout << "Enter end point: \n";
+    std::cin >> ls.end;
+    return in;
 }
