@@ -4,13 +4,13 @@
 
 class Point{
 public:
-    Point(int x = 0, int y = 0, const std::string& tag = "");
+    Point(int x, int y, const std::string& tag);
 
     std::string toString() const;
     // TODO
     ~Point();
     Point(const Point& other);
-    // Point& operator=(const Point& other);
+    Point& operator=(const Point& other);
     
     // Logical operators
     bool operator==(const Point& other);
@@ -36,11 +36,7 @@ public:
     // Postincrament operator
     Point operator++(int);
     Point operator--(int);
-
-    
 private:
-    friend std::ostream& operator<<(std::ostream& out, const Point& point);
-    friend std::istream& operator>>(std::istream& in, Point& point);
     int x;
     int y;
     char* tag;

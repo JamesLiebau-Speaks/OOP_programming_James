@@ -1,6 +1,5 @@
 #include "Point.hpp"
 #include <cstring>
-#include <iostream>
 Point::Point(int x, int y, const std::string& tag) : x(x), y(y) {
     this->tag = new char[tag.size() + 1];
     strcpy(this->tag, tag.c_str());
@@ -80,41 +79,4 @@ int& Point::operator[](int index){
     else{
         return y;
     }
-}
-
-Point::~Point(){
-    delete [] tag;
-}
-Point::Point(const Point& other) : x(other.x), y(other.y) {
-    tag = new char[strlen(other.tag) + 1];
-    strcpy(tag, other.tag);
-}
-// Point& Point::operator=(const Point& other){
-//     if (this != &other){
-//         char* newTag = new char[strlen(other.tag) + 1];
-//         strcpy(newTag, other.tag);
-
-//         delete [] tag;
-//     }
-// }
-std::ostream& operator<<(std::ostream& out, const Point& point){
-    //out << point.toString() << std::endl;
-    out << "x: " << point.x << std::endl;
-    out << "y: " << point.y << std::endl;
-    out << "tag: " << point.tag << std::endl;
-    return out;
-}
-std::istream& operator>>(std::istream& in, Point& point){
-    std::cout << "Enter x, y, and tag for the point: ";
-
-    std::string tmp;
-
-    in >> point.x >> point.y >> tmp;
-
-    delete [] point.tag;
-
-    point.tag = new char[tmp.size() + 1];
-    strcpy(point.tag, tmp.c_str());
-
-    return in;
 }
