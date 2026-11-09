@@ -7,16 +7,19 @@ public:
     Character();
     Character(const std::string& nm, int hp, const std::string& clss);
     ~Character();
-    std::string name;
     int health;
     std::string className = "N/A";
-    void printInfo() const {
+    virtual void printInfo() const {
         std::cout << "Name: " << name << std::endl;
         std::cout << "Class: " << className << std::endl;
         std::cout << "Health: " << health << std::endl;
     }
+    // Getter
+    std::string getName() const{
+        return name;
+    }
 private:
-
+    std::string name;
 };
 class Spells{
 public:
@@ -47,10 +50,13 @@ public:
     ~Warrior();
     int armor;
     //Redefine parents method
-    void printInfo() const {
+    void printInfo() const override {
         // Call base class method
         Character::printInfo();
         std::cout << "Armor: " << armor << std::endl;
+    }
+    void battleCry() const {
+        std::cout << getName() << " Fuck" << std::endl;
     }
 private:
     
@@ -83,7 +89,7 @@ public:
         }
         std::cout << "--Spell List End--" << std::endl;
     }
-    void printInfo() const {
+    void printInfo() const override {
         // Call base class method
         Character::printInfo();
         std::cout << "Armor: " << armor << std::endl;
@@ -95,20 +101,20 @@ private:
     int mana;
     std::vector<Spells> list;
 };
-// class EliteWarrior : public Character {
-// public:
-//     int level;
-//     EliteWarrior(const std::string& nm, int level, const std::string& clss) : Warrior(nm, 0, clss), level(level){
+class EliteWarrior : public Warrior {
+public:
+    int level;
+    EliteWarrior(const std::string& nm, int level, int arm, int hp, const std::string& clss) : Warrior(nm, hp, arm, clss), level(level){
 
-//     }
-//     void printInfo() const {
-//         // Call base class method
-//         Warrior::printInfo();
-//         std::cout << "Level: " << level << std::endl;
-//     }
-// private:
+    }
+    void printInfo() const override {
+        // Call base class method
+        Warrior::printInfo();
+        std::cout << "Level: " << level << std::endl;
+    }
+private:
 
-// };
+};
 int main(void){
     // // Create a Character
     // Character* character = new Character();
@@ -132,7 +138,7 @@ int main(void){
     std::cout << std::endl;
 
     // Character* ptr = &warrior;
-    // std::cout << "Name: " << ptr->name << std::endl;
+    // std::cout << "Name: " << ptr->getName() << std::endl;
     // std::cout << std::endl;
 
     // ptr->printInfo();
@@ -144,20 +150,20 @@ int main(void){
 
     // std::cout << std::endl;
 
-    Mage mage("Alice", "Mage", 80, 5, 100);
-    mage.addSpell(10,"Conjure Mage Light", 0);
-    mage.addSpell(50, "Explosion", 1);
-    mage.addSpell(80, "Healing Light", 6);
-    mage.printInfo();
+    Mage* al = new Mage ("Alice", "Mage", 80, 5, 100);
+    al->addSpell(10,"Conjure Mage Light", 0);
+    al->addSpell(50, "Explosion", 1);
+    al->addSpell(80, "Healing Light", 6);
+    al->printInfo();
 
     Character character2("Mike", 100, "N/A");
-    // Character ew("Ellend", 100, "Elite Warrior");
+    EliteWarrior ew("Ellend", 5, 200, 100, "Elite Warrior");
     //Create an array of characters
-    Character characters[3] = {character2, warrior, mage};
+    Character* characters_ptr[] = {&character2, &warrior, &ew};
 
-    for (int i = 0; i < 3; i++){
-        characters[i].printInfo();
-        std::cout << std::endl;
+    for (Character* c : characters_ptr){
+        c->printInfo();
+        std::cout << "-------------" << std::endl;
     }
 
     return 0;
